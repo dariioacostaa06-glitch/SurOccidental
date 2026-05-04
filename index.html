@@ -29,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* 1. Header Sticky */
+        /* 1. Header Sticky (Mobile First) */
         header {
             position: sticky;
             top: 0;
@@ -37,9 +37,11 @@
             background-color: var(--bg-dark);
             border-bottom: 2px solid var(--accent-orange);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
+            gap: 1rem;
         }
 
         .logo {
@@ -49,20 +51,24 @@
             text-transform: uppercase;
             text-decoration: none;
             letter-spacing: 0.1rem;
+            text-align: center;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav a {
             color: var(--text-white);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
+            padding: 0.3rem 0;
         }
 
         nav a:hover {
@@ -161,6 +167,72 @@
             align-self: flex-start;
         }
 
+        /* 3.5 Horarios */
+        #horarios {
+            padding: 5rem 5%;
+            background-color: #1a1a1a;
+        }
+
+        .grid-horarios {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .horario-card {
+            background-color: var(--bg-dark);
+            border-left: 4px solid var(--accent-orange);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .horario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.8rem;
+        }
+
+        .horario-header h3 {
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+        }
+
+        .horario-body {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .horario-body ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .horario-body li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 0.3rem;
+        }
+
+        .horario-body li:last-child {
+            border-bottom: none;
+        }
+
+        .horario-body span {
+            font-weight: bold;
+            color: var(--text-white);
+        }
+
         /* 4. Contacto Layout */
         #contacto {
             padding: 5rem 5%;
@@ -227,7 +299,24 @@
 
         /* Responsive Media Queries */
         @media (min-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 1.5rem 5%;
+                gap: 0;
+            }
+            nav ul {
+                gap: 2rem;
+            }
+            nav a {
+                font-size: 1rem;
+            }
+            
             .grid-instalaciones {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-horarios {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -251,6 +340,7 @@
         <nav>
             <ul id="menu">
                 <li><a href="#instalaciones">Instalaciones</a></li>
+                <li><a href="#horarios">Horarios</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -296,6 +386,62 @@
                     <div class="card-content">
                         <h3>Yoga y Baile</h3>
                         <p>Espacio diáfano y relajante diseñado para clases de Yoga, Yoga Aéreo y Baile. Desconecta de la rutina y mejora tu movilidad.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3.5 Horarios -->
+        <section id="horarios">
+            <h2 class="section-title">Horarios de Salas</h2>
+            <div class="grid-horarios">
+                <article class="horario-card">
+                    <div class="horario-header">
+                        <h3>🥋 El Tatami</h3>
+                    </div>
+                    <div class="horario-body">
+                        <ul>
+                            <li>Lunes y Miércoles <span>18:00 - 21:00</span></li>
+                            <li>Martes y Jueves <span>19:00 - 22:00</span></li>
+                            <li>Viernes <span>17:00 - 20:00</span></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="horario-card">
+                    <div class="horario-header">
+                        <h3>🏋️‍♂️ Musculación</h3>
+                    </div>
+                    <div class="horario-body">
+                        <ul>
+                            <li>Lunes a Viernes <span>07:00 - 23:00</span></li>
+                            <li>Sábados <span>09:00 - 14:00</span></li>
+                            <li>Domingos <span>Cerrado</span></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="horario-card">
+                    <div class="horario-header">
+                        <h3>🧘‍♀️ Pilates</h3>
+                    </div>
+                    <div class="horario-body">
+                        <ul>
+                            <li>Lunes y Miércoles <span>09:30 - 11:30</span></li>
+                            <li>Martes y Jueves <span>18:00 - 20:00</span></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="horario-card">
+                    <div class="horario-header">
+                        <h3>🤸‍♀️ Yoga y Baile</h3>
+                    </div>
+                    <div class="horario-body">
+                        <ul>
+                            <li>Martes y Jueves <span>10:00 - 12:00</span></li>
+                            <li>Viernes <span>18:30 - 20:30</span></li>
+                        </ul>
                     </div>
                 </article>
             </div>
