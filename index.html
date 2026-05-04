@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Gimnasio Suroccidental en Fernán Núñez. Artes marciales (Kung Fu, San Da, Tai Chi), Musculación con monitores gratis, Pilates con máquinas y Yoga.">
+    <title>Suroccidental | Centro Deportivo</title>
+    <style>
+        /* =========================================
+           VARIABLES Y RESET (Clean Code)
+           ========================================= */
+        :root {
+            --color-brand-orange: #E86A1C;
+            /* Extraído del logo */
+            --color-brand-black: #111111;
+            --color-surface-white: #FFFFFF;
+            --color-surface-gray: #F5F5F5;
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-brand-black);
+            background-color: var(--color-surface-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* =========================================
+           NAVEGACIÓN (Mobile-First)
+           ========================================= */
+        header {
+            background-color: var(--color-brand-black);
+            color: var(--color-surface-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-brand-orange);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        nav a {
+            color: var(--color-surface-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-brand-orange);
+        }
+
+        /* =========================================
+           HERO SECTION (Rendimiento Absoluto)
+           ========================================= */
+        .hero {
+            background: linear-gradient(135deg, var(--color-brand-black) 0%, #333 100%);
+            color: var(--color-surface-white);
+            padding: var(--spacing-lg) var(--spacing-md);
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero h1 span {
+            color: var(--color-brand-orange);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* =========================================
+           SALAS Y ACTIVIDADES (Grid System)
+           ========================================= */
+        .seccion-titulo {
+            text-align: center;
+            padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
+            font-size: 2rem;
+        }
+
+        .grid-salas {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tarjeta-sala {
+            background-color: var(--color-surface-gray);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border-left: 5px solid var(--color-brand-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .tarjeta-sala:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-sala h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .tag-gratis {
+            display: inline-block;
+            background-color: var(--color-brand-orange);
+            color: var(--color-surface-white);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* =========================================
+           CONTACTO Y MAPA (Responsivo)
+           ========================================= */
+        .contacto-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .info-contacto {
+            background-color: var(--color-brand-black);
+            color: var(--color-surface-white);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+        }
+
+        .info-contacto h3 {
+            color: var(--color-brand-orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-contacto p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mapa-contenedor iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-brand-black);
+            color: var(--color-surface-white);
+            text-align: center;
+            padding: var(--spacing-md);
+            font-size: 0.9rem;
+            border-top: 2px solid var(--color-brand-orange);
+        }
+
+        /* =========================================
+           MEDIA QUERIES (Desktop)
+           ========================================= */
+        @media (min-width: 768px) {
+            .grid-salas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contacto-container {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">SUROCCIDENTAL</a>
+        <nav>
+            <ul id="menu">
+                <li><a href="#actividades">Instalaciones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECCIÓN HERO -->
+        <section class="hero">
+            <h1>Fuerza, Equilibrio y <span>Tradición</span></h1>
+            <p>Más que un gimnasio. Tu centro integral de artes marciales chinas, fitness de vanguardia y bienestar en
+                Fernán Núñez.</p>
+        </section>
+
+        <!-- SECCIÓN ACTIVIDADES Y SALAS -->
+        <h2 id="actividades" class="seccion-titulo">Nuestras 4 Salas Especializadas</h2>
+        <section class="grid-salas">
+            <article class="tarjeta-sala">
+                <h3>🥋 El Tatami</h3>
+                <p>El corazón oriental del centro. Clases especializadas en artes marciales chinas: <strong>Kung Fu, San
+                        Da y Tai Chi</strong>. Disciplina y técnica guiada por maestros.</p>
+            </article>
+
+            <article class="tarjeta-sala">
+                <h3>🏋️‍♂️ Sala de Musculación</h3>
+                <p>Maquinaria de última generación y peso libre para tu acondicionamiento físico.</p>
+                <span class="tag-gratis">Incluye Monitores Gratuitos</span>
+            </article>
+
+            <article class="tarjeta-sala">
+                <h3>🧘‍♀️ Sala de Pilates Especial</h3>
+                <p>Nuestra nueva incorporación. Equipamiento específico y máquinas de Pilates para un trabajo profundo
+                    de core, flexibilidad y corrección postural.</p>
+            </article>
+
+            <article class="tarjeta-sala">
+                <h3>🤸‍♀️ Sala de Actividades y Yoga</h3>
+                <p>Espacio diáfano y relajante diseñado para clases de <strong>Yoga, Yoga Aéreo y Baile</strong>.
+                    Desconecta de la rutina y mejora tu movilidad.</p>
+            </article>
+        </section>
+
+        <!-- SECCIÓN CONTACTO Y MAPA -->
+        <h2 id="contacto" class="seccion-titulo">Visítanos y Entrena</h2>
+        <section class="contacto-container">
+            <article class="info-contacto">
+                <h3>Contacto Directo</h3>
+                <p>📍 C. Menéndez y Pelayo, 12<br>14520 Fernán Núñez, Córdoba</p>
+                <p>📞 Teléfono: <a href="tel:+34000000000" style="color:var(--color-surface-white)">+34 000 000 000</a>
+                </p>
+                <p>✉️ Correo: info@suroccidental.es</p>
+                <p>📸 Instagram: <a href="#" style="color:var(--color-surface-white)">@SuroccidentalCentro</a></p>
+            </article>
+
+            <article class="mapa-contenedor">
+                <!-- Iframe optimizado (Lazy Loading) para evitar consumo de datos innecesario en móvil -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3156.417255198083!2d-4.72658828468352!3d37.67104697977823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d1fc5e5a2b8ab%3A0x8e8a8b8b8b8b8b8b!2sC.%20Men%C3%A9ndez%20y%20Pelayo%2C%2012%2C%2014520%20Fern%C3%A1n%20N%C3%BA%C3%B1ez%2C%20C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Mapa de ubicación del Centro Deportivo Suroccidental">
+                </iframe>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Centro Deportivo Suroccidental. Infraestructura digital por PuntoZero.</p>
+    </footer>
+
+    <script>
+        /* 
+           Lógica Javascript (Zero-Latency)
+           Scroll suave nativo para la navegación sin librerías pesadas.
+        */
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
